@@ -1,0 +1,63 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+
+<section class="banner-bottom-wthree bg-light py-lg-5 py-3">
+	<div class="container">
+         <h2>Student's Feedbacks</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+            <th>Sl.No</th>
+            <th>Date</th>
+            <th>Feedback</th>
+            <th>Student Details</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in var %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ x.date }}</td>
+                <td>{{ x.feedback }}</td>
+                <td>{{ x.user.name }} <br> {{ x.user.email }}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+         <br><br>
+        <h2>Company's Feedbacks</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+             <th>Sl.No</th>
+            <th>Date</th>
+            <th>Feedback</th>
+            <th>Company Details</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in var2 %}
+            <tr>
+                 <td>{{ forloop.counter }}</td>
+                <td>{{ x.date }}</td>
+                <td>{{ x.feedback }}</td>
+                 <td>{{ x.cmpny.name }} <br> {{ x.cmpny.website }}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'student/student_home.html' %}
+
+{% block content %}
+
+<section class="gallery">
+    <div class="container">
+        <div class="wthree_head_section" style="margin-top:50px !important">
+            <h2 class="w3l_header">All JobPost</h2>
+            <br>
+        </div>
+
+        {% for x in var %}
+        <div class="gallery">
+            <div class="desc"><b>Role: {{x.role}}</b>
+                <br>Experience:{{x.experience}}
+                <br> Qualification:{{x.qualification}}
+                <br>Skills:{{x.skills}}
+                <br>Requirements:{{x.requirements}}
+				<br>Company : {{x.cmpny.name}}
+				<br>Company Website : {{x.cmpny.website}}
+            </div>
+
+            <center>
+                {% if x.id in jobid %}
+                    <a href="#" class="btn btn-success">Applied</a>
+                {% else %}
+                    <a href="/student_uploadcv/?id={{x.id}}" class="btn btn-primary">Apply</a>
+                {% endif %}
+            </center>
+
+            <br>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+<br> <br> <br>
+<section class="gallery" style="height:1000px"></section>
+
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+<!--  float: left;-->
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+
+{% endblock %}

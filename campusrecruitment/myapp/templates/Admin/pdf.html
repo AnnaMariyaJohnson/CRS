@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Report</title>
+    <style type="text/css">
+        table{
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div>
+
+    </div>
+
+    <div style="width:100%;height:100px;display: block;margin-top:50px;">
+
+
+       <div class="container">
+         <div style="width:50%;float: left;">
+         <h3 style="font-size: 25px;"><center>Report</center></h3>
+
+
+            <table class="table" border="0">
+            <thead>
+            <tr>
+            <th>Sl.No</th>
+            <th>Job Details</th>
+            <th>Student details</th>
+            <th>Application details</th>
+            <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in var %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>role: {{ x.job_id.role }} <br> Exp: {{ x.job_id.experience }} <br>Company : {{x.job_id.cmpny.name}}</td>
+                <td>{{ x.user_id.name }} <br> {{x.user_id.email}} </td>
+                <td>{{ x.date }} <br>Interview Date: {{ x.interview_date }} <br>Interview Location: {{ x.interview_location }} </td>
+                <td>{{ x.status }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
+        </div>
+        
+       </div>
+    </div>
+
+    
+
+    <div class="container">
+        <div style="width: 90%;">
+            <p style="text-align: right;font-weight: 600;color:#0f62a5;"></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

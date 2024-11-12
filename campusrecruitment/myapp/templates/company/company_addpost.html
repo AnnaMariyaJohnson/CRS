@@ -1,0 +1,45 @@
+{% extends 'company/company_home.html' %}
+{% block content %}
+
+<section class="banner-bottom-wthree bg-light py-lg-5 py-3">
+	<div class="container">
+
+
+
+        <div class="col-md main_grid_contact">
+						<div class="form">
+							<h4 class="mb-4 text-left">Add Job Post</h4>
+							<form action="/cmpny_addpost/" method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+								<div class="form-group">
+									<label class="my-2">Job Role</label>
+									<input class="form-control" type="text" name="role" placeholder="" required="">
+								</div>
+								<div class="form-group">
+									<label>Experience</label>
+									<input class="form-control" type="text" name="experience" placeholder="" required="">
+								</div>
+								<div class="form-group">
+									<label>Qualification</label>
+									<input class="form-control" type="text" name="qualification" placeholder="" required="">
+								</div>
+								<div class="form-group">
+									<label>Skills</label>
+									<input class="form-control" type="text" name="skills" placeholder="" required="">
+								</div>
+								<div class="form-group">
+									<label>Requirements</label>
+									<textarea id="textarea" placeholder="" name="requirements"></textarea>
+								</div>
+								<div class="input-group1">
+									<input class="form-control" type="submit" value="Submit">
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+    </div>
+</section>
+
+{% endblock %}

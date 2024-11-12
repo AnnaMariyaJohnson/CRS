@@ -1,0 +1,46 @@
+{% extends 'company/company_home.html' %}
+{% block content %}
+<div class="container">
+			<div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">Interviewed Candidates</h2>
+				<br>
+			</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl No</th>
+      <th>Applied Date</th>
+      <th>Job details</th>
+      <th>Name</th>
+      <th>Resume</th>
+       <th>Status</th>
+      <th>Select</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for candidate in candidates %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{candidate.date}}</td>
+        <td>Role: {{candidate.job_id.role}} <br>Exp: {{candidate.job_id.experience}} </td>
+      <td>{{ candidate.user_id.name }} <br>{{candidate.user_id.phone}} <br> {{candidate.user_id.email}} <br> {{candidate.user_id.qualification }} </td>
+      <td><a href="{{ candidate.resume.url }}" target="_blank" style="color: blue;">View Resume</a></td>
+         <td>{{candidate.status}}</td>
+       <td>
+        <a href="/company_select_candidate/?id={{candidate.id}}" class="btn btn-danger">Select</a>
+
+       </td>
+
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+
+{% endblock %}

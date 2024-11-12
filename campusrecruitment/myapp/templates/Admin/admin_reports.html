@@ -1,0 +1,42 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+
+<section class="banner-bottom-wthree bg-light py-lg-5 py-3">
+	<div class="container">
+        <h2> Reports </h2>
+        <br><br>
+        <span style="float:left !important;">
+            <a href="/download_as_pdf/" style=" margin-right:100px" class="btn btn-primary">Download</a>
+        </span>
+        <br><br>
+        <table class="table">
+            <thead>
+            <tr>
+            <th>Sl.No</th>
+            <th>Job Details</th>
+            <th>Student details</th>
+            <th>Application details</th>
+            <th>Status</th>
+<!--                <th></th>-->
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in var %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>role: {{ x.job_id.role }} <br> Exp: {{ x.job_id.experience }} <br>Company : {{x.job_id.cmpny.name}}</td>
+                <td>{{ x.user_id.name }} <br> {{x.user_id.email}} </td>
+                <td>{{ x.date }} <br>Interview Date: {{ x.interview_date }} <br>Interview Location: {{ x.interview_location }} </td>
+                <td>{{ x.status }}</td>
+<!--                <td><a href="/download_as_pdf/?id={{x.id}}">Download</a></td>-->
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+</section>
+
+{% endblock %}

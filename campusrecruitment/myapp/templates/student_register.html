@@ -1,0 +1,45 @@
+{% extends 'about.html' %}
+{% block content %}
+
+
+<div class="col-md main_grid_contact text-center">
+						<div class="form">
+							<h4 class="mb-4 text-center">Register Now</h4>
+							<form action="/student_register/" method="post">
+                                {% csrf_token %}
+								<div class="form-group">
+									<label class="my-2">Name</label>
+									<input class="form-control" type="text" name="name" placeholder="" required="">
+								</div>
+								<div class="form-group">
+									<label class="my-2">Qualification</label>
+									<input class="form-control" type="text" name="qualification" placeholder="" required="">
+								</div>
+
+                                <div class="form-group">
+									<label>Phone</label>
+									<input class="form-control" type="text" name="phone" placeholder="" required="">
+								</div>
+                                <div class="form-group">
+									<label>Email</label>
+									<input class="form-control" type="email" name="email" placeholder="" required="">
+								</div>
+                                <div class="form-group">
+									<label>Password</label>
+									<input class="form-control" type="password" name="pswd" placeholder="" required="">
+								</div>
+<!--								<div class="form-group">-->
+<!--									<label>Message</label>-->
+<!--									<textarea id="textarea" placeholder=""></textarea>-->
+<!--								</div>-->
+								<div class="input-group1">
+									<input class="form-control" type="submit" value="Submit">
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'student/student_home.html' %}
+{% block content %}
+<div class="container">
+			<div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">Shortlisted Applications</h2>
+				<br>
+			</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl No</th>
+      <th>Applied Date</th>
+      <th>Job Details</th>
+      <th>Company</th>
+       <th>Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for candidate in applyjob %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{candidate.date}}</td>
+      <td>Role:{{ candidate.job_id.role }} <br>Qualification:{{candidate.job_id.qualification}} <br> Exp:{{candidate.job_id.experience}} </td>
+      <td>{{candidate.cmp_id.name}} <br> {{candidate.cmp_id.website}}</td>
+         <td>Interview {{candidate.status}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  <div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">All Applications</h2>
+				<br>
+			</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl No</th>
+      <th>Applied Date</th>
+      <th>Job Details</th>
+      <th>Company</th>
+       <th>Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for candidate in applyjob2 %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{candidate.date}}</td>
+      <td>Role:{{ candidate.job_id.role }} <br>Qualification:{{candidate.job_id.qualification}} <br> Exp:{{candidate.job_id.experience}} </td>
+      <td>{{candidate.cmp_id.name}} <br> {{candidate.cmp_id.website}}</td>
+         <td>
+           {% if candidate.status == 'selected' %}
+           <span class="badge badge-success">{{candidate.status}}</span>
+           {% else %}
+           <span>{{candidate.status}}</span>
+           {% endif %}
+         </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+
+{% endblock %}

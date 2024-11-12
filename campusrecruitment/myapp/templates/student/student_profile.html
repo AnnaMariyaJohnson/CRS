@@ -1,0 +1,35 @@
+{% extends 'student/student_home.html' %}
+{% block content %}
+
+
+<h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Profile</h3>
+<table class="table" border="0">
+	{% for x in var %}
+	<tr>
+		<th>Name</th><td>{{x.name}}</td>
+	</tr>
+	<tr>
+		<th>Phone</th><td>{{x.phone}}</td>
+	</tr>
+	<tr>
+		<th>Qualification</th><td>{{x.qualification}}</td>
+	</tr>
+	<tr>
+		<th>Email</th><td>{{x.email}}</td>
+	</tr>
+	<tr>
+		<th>Password</th><td>{{x.pswd}}</td>
+	</tr>
+	
+<!--	<tr>-->
+<!--		<td><a href="/user_edit_profile/?id={{x.id}}" class="btn btn-success">EDIT</a></td>-->
+<!--	</tr>-->
+	{% endfor %}
+</table>
+
+
+
+
+
+
+{% endblock %}

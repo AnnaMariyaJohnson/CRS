@@ -1,0 +1,68 @@
+{% extends 'company/company_home.html' %}
+{% block content %}
+<div class="container">
+			<div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">All Candidates</h2>
+				<br>
+			</div>
+    <div style=" margin-bottom:20px; align-items:center" >
+				<center>
+				<form method="post" action="/cmpny_candidate/" class="form" style="display:flex">
+					{% csrf_token %}
+				<select  name="qualif"  class="form-control">
+					<option selected="" disabled="">&nbsp;Search Qualification</option>
+					<option value="All">All Qualification</option>
+					{% for x in qualif %}
+					<option value="{{x}}">{{x}}</option>
+					{% endfor %}
+					</select>
+				<input type="submit" name="search" id="search" value="search" class="btn btn-primary">
+				<br />
+				</form>
+					</center>
+			</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl No</th>
+      <th>Applied Date</th>
+      <th>Job details</th>
+      <th>Name</th>
+      <th>Resume</th>
+       <th>Status</th>
+      <th>Reject</th>
+      <th>Call</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for candidate in candidates %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{candidate.date}}</td>
+        <td>Role: {{candidate.job_id.role}} <br>Exp: {{candidate.job_id.experience}} </td>
+      <td>{{ candidate.user_id.name }} <br>{{candidate.user_id.phone}} <br> {{candidate.user_id.email}} <br> {{candidate.user_id.qualification }} </td>
+      <td><a href="{{ candidate.resume.url }}" target="_blank" style="color: blue;">View Resume</a></td>
+         <td>{{candidate.status}}</td>
+       <td>
+        {% if candidate.status == 'pending' %}
+        <a href="/company_reject_candidate/?id={{candidate.id}}" class="btn btn-danger">Reject</a>
+        <!-- <button class="btn btn-danger" style="color: blue !importatnt;" onclick="rejectCandidate({{ candidate.id }})">Reject</button> -->
+        {% endif %}
+       </td>
+
+      <td>
+        {% if candidate.status == 'pending' %}
+        <a href="/company_approve_candidate/?id={{candidate.id}}" class="btn btn-success">Call</a>
+        <!-- <button class="btn btn-success" onclick="callCandidate({{ candidate.id }})">Call</button> -->
+        {% endif %}
+      </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+
+{% endblock %}

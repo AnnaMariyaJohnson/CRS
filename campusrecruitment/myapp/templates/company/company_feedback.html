@@ -1,0 +1,29 @@
+{% extends 'company/company_home.html' %}
+{% block content %}
+<div class="container">
+			<div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">Feedback</h2>
+				<br>
+			</div>
+
+    <div class="col-md main_grid_contact">
+						<div class="form">
+<!--							<h4 class="mb-4 text-left">Feedback</h4>-->
+							<form action="/cmpny_feedback/" method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+<!--								<input type="hidden" value="{{ii}}" name="ii">-->
+								<div class="form-group">
+									<label class="my-2">Feedaback</label>
+									<textarea class="form-control" name="feedback" required="required"></textarea>
+								</div>
+
+
+								<div class="input-group1">
+									<input class="form-control" type="submit" value="Send">
+								</div>
+							</form>
+						</div>
+					</div>
+  </div>
+
+{% endblock %}

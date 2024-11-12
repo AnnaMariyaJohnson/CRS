@@ -1,0 +1,84 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+
+<section class="gallery">
+		<div class="container">
+			<div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">All JobPost</h2>
+				<br>
+			</div>
+
+			{% for x in cmpny %}
+			<div class="gallery">
+
+				<div class="desc"><b>Role: {{x.role}}</b>
+			  <br>Experience:{{x.experience}}
+				  <br> Qualification:{{x.qualification}}
+				  <br>Skills:{{x.skills}}
+					<br>Requirements:{{x.requirements}}
+					<br>Company Name : {{x.cmpny.name}}
+					<br>Company Website : {{x.cmpny.website}}
+
+			  </div>
+				<center>
+				<a href="/admin_approvepost/?id={{x.id}}" class="btn btn-success">Approve</a>
+				<a href="/admin_rejectpost/?id={{x.id}}" class="btn btn-danger">Reject</a>
+
+				</center>
+			</div>
+			{% endfor %}
+		</div>
+</section>
+
+
+	<section class="gallery">
+		<div class="container" style="margin-top:100px !important">
+			<div class="wthree_head_section" style="margin-top:50px !important">
+				<h2 class="w3l_header">Approved JobPosts</h2>
+				<br>
+			</div>
+
+			{% for x in cmpny2 %}
+			<div class="gallery">
+				<div class="desc"><b>Role: {{x.role}}</b>
+			  <br>Experience:{{x.experience}}
+				  <br> Qualification:{{x.qualification}}
+				  <br>Skills:{{x.skills}}
+					<br>Requirements:{{x.requirements}}
+					<br>Company Name : {{x.cmpny.name}}
+					<br>Company Website : {{x.cmpny.website}}
+			  </div>
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+
+
+
+<br> <br> <br>
+<section class="gallery" style="height:1000px"></section>
+
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+<!--  float: left;-->
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 20px;
+  text-align: center;
+}
+</style>
+
+{% endblock %}
